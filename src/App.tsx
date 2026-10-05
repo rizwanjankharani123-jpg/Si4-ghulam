@@ -5,6 +5,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { GiftIntro } from './components/GiftIntro';
+import { GoldenPetalsCanvas } from './components/GoldenPetalsCanvas';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
 import { InteractiveGiftSection } from './components/InteractiveGiftSection';
@@ -24,6 +25,14 @@ export default function App() {
   const [celebrationCount, setCelebrationCount] = useState(0);
   const [isScrollRevealed, setIsScrollRevealed] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
+
+  // Auto trigger celebratory welcoming sparkle on first load
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      triggerStarSparks();
+    }, 700);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleCelebrate = () => {
     triggerGrandCelebration();
@@ -60,6 +69,9 @@ export default function App() {
   return (
     <div className="relative min-h-screen bg-[#040711] text-slate-100 flex flex-col selection:bg-amber-500/30 selection:text-amber-200 overflow-x-hidden">
       
+      {/* 🌸 Gently Falling Golden Petals & Sparkles Background Animation */}
+      <GoldenPetalsCanvas />
+
       {/* 🎁 Opening Cinematic VIP Gift Intro */}
       <GiftIntro
         isOpen={showGiftIntro}
@@ -80,7 +92,7 @@ export default function App() {
       />
 
       {/* Main VIP Content */}
-      <main className="flex-1">
+      <main className="flex-1 relative z-10">
         {/* 1. VIP Hero Section */}
         <HeroSection
           onCelebrate={handleCelebrate}

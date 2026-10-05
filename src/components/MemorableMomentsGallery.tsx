@@ -48,18 +48,21 @@ export const MemorableMomentsGallery: React.FC = () => {
   };
 
   return (
-    <section id="gallery" className="py-14 sm:py-20 px-4 sm:px-6 max-w-7xl mx-auto">
+    <section id="gallery" className="relative py-14 sm:py-20 px-4 sm:px-6 max-w-7xl mx-auto">
       
+      {/* Background Glow Soft Light */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[85vw] max-w-[900px] h-[400px] bg-gradient-to-r from-amber-500/10 via-emerald-500/10 to-amber-500/10 rounded-full blur-[140px] pointer-events-none -z-10" />
+
       {/* Section Header */}
       <div className="text-center mb-10 sm:mb-12">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-semibold uppercase tracking-widest font-royal mb-3">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-semibold uppercase tracking-widest font-royal mb-3 shadow-sm">
           <Sparkles className="w-3.5 h-3.5 text-amber-400" />
           <span>Yaadgaar Moments & Memories</span>
         </div>
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-serif-title text-slate-100 leading-tight">
           Glimpses of Respected Sir Ghulam Ali Soomro
         </h2>
-        <p className="text-slate-400 text-xs sm:text-sm md:text-base max-w-2xl mx-auto mt-3 font-light">
+        <p className="text-slate-300 text-xs sm:text-sm md:text-base max-w-2xl mx-auto mt-3 font-light leading-relaxed">
           Celebrating the inspiring presence, joyful spirit, and lifelong dedication of our respected teacher through memorable moments.
         </p>
 
@@ -87,41 +90,41 @@ export const MemorableMomentsGallery: React.FC = () => {
         </div>
       </div>
 
-      {/* Responsive Grid with Perfectly Cropped & Fitted Images */}
+      {/* Responsive Grid with Crystal-Clear Borders & Smooth Hover */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-6">
         {filteredImages.map((img) => (
           <div
             key={img.id}
             onClick={() => openLightbox(img)}
-            className="group relative rounded-3xl bg-slate-900/80 border border-amber-500/20 hover:border-amber-400/60 p-2.5 overflow-hidden shadow-xl hover:shadow-2xl hover:shadow-amber-500/15 transition-all duration-300 hover:-translate-y-1.5 cursor-pointer flex flex-col justify-between"
+            className="group relative rounded-3xl bg-slate-900/90 border border-amber-500/25 hover:border-amber-400/70 p-2.5 overflow-hidden shadow-xl hover:shadow-2xl hover:shadow-amber-500/20 transition-all duration-300 hover:-translate-y-1 cursor-pointer flex flex-col justify-between transform-gpu"
           >
-            {/* Image Frame with Aspect Ratio - Cropped & Top-Focused */}
-            <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden bg-slate-950 flex items-center justify-center">
+            {/* Image Frame with Aspect Ratio - Smooth Masking to Prevent Any Edge Glitches */}
+            <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden bg-slate-950 flex items-center justify-center isolate">
               <img
                 src={img.src}
                 alt={`Sir Ghulam Ali Soomro - ${img.title}`}
-                className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105 will-change-transform"
                 loading="lazy"
                 referrerPolicy="no-referrer"
               />
 
-              {/* Gradient Scrim for Readability */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
+              {/* Gradient Scrim for Contrast and Smoothness */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-85 group-hover:opacity-90 transition-opacity pointer-events-none" />
 
               {/* Tag in Top Right */}
-              <div className="absolute top-3 right-3 px-2.5 py-1 rounded-lg bg-black/60 backdrop-blur-md border border-amber-400/30 text-[10px] font-semibold text-amber-300 font-royal shadow">
+              <div className="absolute top-3 right-3 px-2.5 py-1 rounded-lg bg-black/75 backdrop-blur-md border border-amber-400/30 text-[10px] font-semibold text-amber-300 font-royal shadow">
                 {img.tag}
               </div>
 
               {/* Hover View Affordance */}
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/30 backdrop-blur-xs">
-                <span className="p-3 rounded-full bg-amber-500/90 text-slate-950 shadow-lg transform scale-90 group-hover:scale-100 transition-transform">
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/40 backdrop-blur-sm">
+                <span className="p-3 rounded-full bg-amber-500 text-slate-950 shadow-lg transform scale-90 group-hover:scale-100 transition-transform font-bold">
                   <Maximize2 className="w-5 h-5" />
                 </span>
               </div>
 
               {/* Caption Overlay at Bottom */}
-              <div className="absolute bottom-0 inset-x-0 p-4 text-left">
+              <div className="absolute bottom-0 inset-x-0 p-3.5 text-left pointer-events-none">
                 <p className="text-xs sm:text-sm font-bold font-serif-title text-amber-200 line-clamp-1">
                   {img.title}
                 </p>
@@ -132,7 +135,7 @@ export const MemorableMomentsGallery: React.FC = () => {
             </div>
 
             {/* Bottom Mini Strip */}
-            <div className="pt-2 px-2 pb-1 flex items-center justify-between text-[11px] text-slate-400">
+            <div className="pt-2.5 px-2 pb-1 flex items-center justify-between text-[11px] text-slate-400">
               <span className="font-royal text-amber-400/90 font-medium">Sir Ghulam Ali Soomro</span>
               <span className="text-emerald-400 flex items-center gap-1 font-medium">
                 <Eye className="w-3.5 h-3.5" /> View Photo
@@ -149,13 +152,13 @@ export const MemorableMomentsGallery: React.FC = () => {
           onClick={closeLightbox}
         >
           <div
-            className="relative max-w-4xl w-full bg-[#080d1a] border border-amber-400/40 rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row max-h-[90vh]"
+            className="relative max-w-4xl w-full bg-[#080d1a] border border-amber-400/50 rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row max-h-[90vh]"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
             <button
               onClick={closeLightbox}
-              className="absolute top-4 right-4 z-20 p-2.5 rounded-full bg-black/70 hover:bg-black text-slate-200 border border-amber-500/40 transition-colors cursor-pointer"
+              className="absolute top-4 right-4 z-20 p-2.5 rounded-full bg-black/75 hover:bg-black text-slate-200 border border-amber-500/40 transition-colors cursor-pointer"
             >
               <X className="w-5 h-5" />
             </button>
@@ -163,7 +166,7 @@ export const MemorableMomentsGallery: React.FC = () => {
             {/* Left/Prev Arrow */}
             <button
               onClick={prevImage}
-              className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-black/70 hover:bg-black text-amber-300 border border-amber-500/40 transition-colors cursor-pointer hidden sm:flex items-center justify-center"
+              className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-black/75 hover:bg-black text-amber-300 border border-amber-500/40 transition-colors cursor-pointer hidden sm:flex items-center justify-center"
             >
               <ChevronLeft className="w-6 h-6" />
             </button>
@@ -171,12 +174,12 @@ export const MemorableMomentsGallery: React.FC = () => {
             {/* Right/Next Arrow */}
             <button
               onClick={nextImage}
-              className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-black/70 hover:bg-black text-amber-300 border border-amber-500/40 transition-colors cursor-pointer hidden sm:flex items-center justify-center"
+              className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-black/75 hover:bg-black text-amber-300 border border-amber-500/40 transition-colors cursor-pointer hidden sm:flex items-center justify-center"
             >
               <ChevronRight className="w-6 h-6" />
             </button>
 
-            {/* Image Viewer - Fitted */}
+            {/* Image Viewer - Fitted Cleanly */}
             <div className="w-full md:w-3/5 bg-black flex items-center justify-center p-4 max-h-[55vh] md:max-h-[85vh]">
               <img
                 src={selectedImage.src}
